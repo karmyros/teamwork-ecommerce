@@ -1,0 +1,217 @@
+<html><head>
+    <script src="cart.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Доставка й оплата</title>
+    <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400;600&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    </head>
+    <body style="overflow-x: hidden;">
+        <main style="padding: 0%; margin: 0%;">
+        <div id="myNavLeft" class="overlay overlay-left">
+            <div class="overlay-content">
+             
+              <a href="НОВИНКИ.HTML">Новинки</a>
+              <a href="ПРО НАС.HTML">Про нас</a>
+              <a href="ДОСТАВКА.HTML">Доставка</a>
+            </div>
+          </div>
+        
+          <div id="myNavRight" class="overlay overlay-right">
+            <div class="overlay-content">
+              <div id="cartItemsContainer"></div>
+              <button class="checkout-button" onclick="redirectToCheckout()">Оформити замовлення</button>
+            </div>
+          </div>
+      
+      
+        <span class="openbtn openbtn-left" onclick="toggleLeftNav()"><img src="img/menu.png" alt="Логотип магазина"> </span>
+        <span class="openbtn openbtn-right" onclick="toggleRightNav()"><img src="img/basket.png" alt="Кошик"></span>
+        
+        <script>
+          function toggleLeftNav() {
+            var navLeft = document.getElementById("myNavLeft");
+            if (navLeft.style.width === "252px") {
+              closeNavLeft();
+            } else {
+              openNavLeft();
+            }
+          }
+          
+          function openNavLeft() {
+            document.getElementById("myNavLeft").style.width = "252px";
+          }
+          
+          function closeNavLeft() {
+            document.getElementById("myNavLeft").style.width = "0%";
+          }
+          
+          function toggleRightNav() {
+            var navRight = document.getElementById("myNavRight");
+            if (navRight.style.width === "18%") {
+              closeNavRight();
+            } else {
+              openNavRight();
+            }
+          }
+          
+          function openNavRight() {
+            document.getElementById("myNavRight").style.width = "18%";
+          }
+          
+          function closeNavRight() {
+            document.getElementById("myNavRight").style.width = "0%";
+          }
+          
+          function redirectToCheckout() {
+            // Перенаправлення на нову сторінку для введення даних покупця
+            window.location.href = "checkout.html";
+          }
+        </script>
+        
+    <header>
+      <div class="golovna">
+        <a href="index.html"> <img src="img/loggo.png" alt="Soul Light"></a>
+      </div>
+    </header>
+  <style> ul li {
+    opacity: 0.9;
+    background-color: #36251b;
+  }</style>
+    <section class="delivery-payment-section">
+        <div class="main-content">
+            
+            <div class="content-wrapper">
+                <h1 class="section-title" style="font-size: 50px;">Оплата та доставка</h1>
+                <pre style="font-size: small;  opacity: 0.9; background-color: #36251b; "> </pre>
+                <h2 class="section-title">Доставка і оплата</h2>
+                <p class="section-text">
+                    Вся продукція знаходиться на складі в Україні і відправляється клієнту протягом доби.
+                </p>
+                <p class="section-text">
+                    Товар доставляється безкоштовно до обраного відділення Нової пошти при замовленні більш ніж на 1000 грн.
+                </p>
+                <br>
+                <h2 class="section-title">Способи оплати</h2>
+                <p class="section-text">
+                    Готівкою при отриманні товару кур'єру або в відділення Нової пошти післяплатою (вартість послуги перекладу післяплатою згідно тарифів Нової пошти оплачує покупець)
+                </p>
+                    <ul class="section-text">
+                    <li>Картою Visa або MasterCard на сайті</li>
+                    <li>Google Pay, Apple Pay</li>
+                    <li>Купівля в розстрочку за допомогою сервісів Оплата частинами від ПриватБанку і покупка частинами від Монобанк</li>
+                    <li>оплата біткоінами</li>
+                </ul>
+                <br>
+                <h2 class="section-title">Умови доставки</h2>
+                <p class="section-text">
+                    Для наших покупців доступні наступні способи доставки:
+                </p>
+                <ul class="section-text">
+                    <li>Кур'єрська доставка по Києву (вартість 150 грн)</li>
+                    <li>Кур'єрська доставка по Україні (відповідно до тарифів Нової Пошти)</li>
+                    <li>Доставка до відділення Нової Пошти</li>
+                    <li>Самовивіз з магазинів в ТРЦ Lavina, Blockbuster mall, Respublika, Ocean Plaza, Retroville та River Mall, м Київ — зазначайте в коментарях до замовлення</li>
+                </ul>
+                <p class="section-text">
+                    По Києву доставка товарів здійснюється в будні дні з 10:00 до 19:00. У момент доставки наш кур'єр видає товарний чек. Під час замовлення менеджери узгодять зручний для Вас діапазон часу для доставки.
+                </p>
+                <p class="section-text">
+                    Відправлення товарів по Україні здійснюється кур'єрською службою «Нова Пошта» по буднях і є безкоштовною при замовленні більш ніж від 1000 грн. У разі суми замовлення до 1000 грн, вартість послуг Нової пошти оплачує покупець за тарифами Нової Пошти
+                </p>
+            </div>
+        </div>
+        <script>
+          var cartItems = [];
+      
+          function addToCart(name, price, imageSrc) {
+            var existingCartItem = cartItems.find(item => item.name === name);
+      
+            if (existingCartItem) {
+              existingCartItem.quantity += 1;
+            } else {
+              cartItems.push({
+                name: name,
+                price: price,
+                imageSrc: imageSrc,
+                quantity: 1
+              });
+            }
+      
+            updateCartDisplay();
+            alert('Товар ' + name + ' додано в кошик!');
+      
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+          }
+      
+          function removeFromCart(index) {
+            cartItems.splice(index, 1);
+            updateCartDisplay();
+      
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+          }
+      
+          function increaseQuantity(index) {
+            cartItems[index].quantity += 1;
+            updateCartDisplay();
+      
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+          }
+      
+          function decreaseQuantity(index) {
+            if (cartItems[index].quantity > 1) {
+              cartItems[index].quantity -= 1;
+              updateCartDisplay();
+      
+              localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            }
+          }
+      
+          function updateCartDisplay() {
+            var cartItemsContainer = document.querySelector('#cartItemsContainer');
+            cartItemsContainer.innerHTML = '';
+      
+            cartItems.forEach(function (item, index) {
+              var cartItem = document.createElement('div');
+              cartItem.classList.add('cart-item');
+      
+              cartItem.innerHTML = `
+                <img src="${item.imageSrc}" alt="Product">
+                <h3>${item.name}</h3>
+                <p>${item.price}</p>
+                <p>${item.quantity} шт</p>
+                <button class="increase-button" onclick="increaseQuantity(${index})">+</button>
+                <button class="decrease-button" onclick="decreaseQuantity(${index})">-</button>
+                <button class="remove-button" onclick="removeFromCart(${index})">Видалити</button>
+              `;
+      
+              cartItemsContainer.appendChild(cartItem);
+            });
+          }
+      
+          function restoreCartFromLocalStorage() {
+            var savedCartItems = localStorage.getItem('cartItems');
+      
+            if (savedCartItems) {
+              cartItems = JSON.parse(savedCartItems);
+              updateCartDisplay();
+            }
+          }
+      
+          var checkoutButton = document.querySelector('.checkout-button');
+          checkoutButton.addEventListener('click', checkout);
+      
+          function checkout() {
+            cartItems = [];
+            updateCartDisplay();
+            alert('Замовлення оформлено!');
+      
+            localStorage.removeItem('cartItems');
+          }
+        </script>
+        <footer>
+          <p>© 2024 Soul Light. All rights reserved.</p>
+        </footer>
+    </main></section>
+    
+    </body></html>
