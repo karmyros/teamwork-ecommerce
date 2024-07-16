@@ -1,0 +1,346 @@
+<html><head>
+  <link href="style.css" rel="stylesheet"> 
+  <script src="cart.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <title>Новинки - Soul Light</title>
+
+</head>
+<body style="overflow-x: hidden;">
+ 
+<main style="width: 100%;">
+  <div id="myNavLeft" class="overlay overlay-left">
+    <div class="overlay-content">
+      <a href="НОВИНКИ.HTML">Новинки</a>
+      <a href="ПРО НАС.HTML">Про нас</a>
+      <a href="ДОСТАВКА.HTML">Доставка</a>
+    </div>
+  </div>
+  
+  <div id="myNavRight" class="overlay overlay-right">
+    <div class="overlay-content">
+      <div class="cart-item">
+      </div>
+      <button class="checkout-button" onclick="redirectToCheckout()">Оформити замовлення</button>
+    </div>
+     
+  </div>
+  
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      restoreCartFromLocalStorage();
+    });
+  </script>
+  
+
+  <span class="openbtn openbtn-left" onclick="toggleLeftNav()"><img src="img/menu.png" alt="Логотип магазина"> </span>
+  <span class="openbtn openbtn-right" onclick="toggleRightNav()"><img src="img/basket.png" alt="Кошик"></span>
+  
+  <script>
+    function toggleLeftNav() {
+      var navLeft = document.getElementById("myNavLeft");
+      if (navLeft.style.width === "252px") {
+        closeNavLeft();
+      } else {
+        openNavLeft();
+      }
+    }
+    
+    function openNavLeft() {
+      document.getElementById("myNavLeft").style.width = "252px";
+    }
+    
+    function closeNavLeft() {
+      document.getElementById("myNavLeft").style.width = "0%";
+    }
+    
+    function toggleRightNav() {
+      var navRight = document.getElementById("myNavRight");
+      if (navRight.style.width === "18%") {
+        closeNavRight();
+      } else {
+        openNavRight();
+      }
+    }
+    
+    function openNavRight() {
+      document.getElementById("myNavRight").style.width = "18%";
+    }
+    
+    function closeNavRight() {
+      document.getElementById("myNavRight").style.width = "0%";
+    }
+    
+    function redirectToCheckout() {
+      // Перенаправлення на нову сторінку для введення даних покупця
+      window.location.href = "checkout.html";
+    }
+  </script>
+  
+  <header>
+    <div class="golovna">
+      <a href="index.html"> <img src="img/loggo.png" alt="головна"></a>
+          </div></header>
+  <section id="productss">
+   
+  
+
+    
+    <div class="product1" style="display: flex; position: relative;">
+      <img src="img/набір 3шт.png" style="border-radius: 15%; border: 2px solid #36251b; width: 150%; height: 550px;"alt="Product 1">
+      <style>@media (max-width: 1070px) { #productss .product1 img {width: 100% !important;}}</style>
+    <div class="text">
+        <h1 style="font-size: xx-large;">Набір свічок 3 шт Urban apothecary з різними ароматами </h1>
+        <p style="font-size: 25px;">Ціна:3189UAH|210g</p>
+        <h2 style="color: #36251b;"><i>Незабаром в наявності!</i></h2>
+      <div class="text1" style="display: contents; position: relative; text-align: left;">
+      <div style="display: flex; margin-top: 5%;">
+         <p style="float: left; text-align: left; color: gray;">
+          <b>Характеристики</b>
+          <br>Вага, г
+          <br>Час горіння
+          <br>Розмір, см
+          <br>Країна-виробник товару
+          <br>Бренд
+          <br>Матеріал
+         </p>
+         <p style="float: right; text-align: right;">
+          <br>210 г
+          <br>20 годин
+          <br>26 х 20 х H9 см
+          <br>Великобританія
+          <br>Urban apothecary
+          <br>Соєвий віск
+         </p>
+         </div>
+         <br>
+          <b>Опис</b>
+          <p style="font-size: 14px;">
+            Набір свічок, 3 шт. по 70 г.<br>
+          У Luxury Candle Library входять три стильні свічки, наповнені різним фірмовим ароматом. Кожен культовий аромат народжується з історій, настроїв та спогадів, втілених у життя за допомогою сучасних сумішей квітів, фруктів, смол та деревних ароматів. Створіть свою ароматну історію, вибравши аромат для інтер'єру, який підніме, змінить чи освіжить вас та ваш будинок. 
+          <br>Вони виготовлені з найкращих матеріалів із використанням традиційних технологій, відлиті вручну в Англії досвідченими майстрами. 
+         </p>
+    </div>
+    </div>
+    </div>
+    <div class="product1" style="display: flex; position: relative;">
+      <img src="img/набір 12шт.png" style="border-radius: 15%; border: 2px solid #36251b; width: 150%; height: 550px;;" alt="Product 1">
+      <style>@media (max-width: 1070px) { #productss .product1 img {width: 100% !important;}}</style>
+    <div class="text">
+        <h1 style="font-size: xx-large;">Набір свічок 12 шт Urban apothecary з різними ароматами</h1>
+        <p style="font-size: 25px;">Ціна:6899UAH|420g</p>
+        <h2 style="color: #36251b;"><i>Незабаром в наявності!</i></h2>
+      <div class="text1" style="display: contents; position: relative; text-align: left;">
+      <div style="display: flex; margin-top: 5%;">
+         <style>@media (max-width: 1070px) { #productss .product1 .text .text1 div {padding-top: 10% !important;}}</style><p style="float: left; text-align: left; color: grey;">
+          <b>Характеристики</b>
+          <br>Вага, г
+          <br>Час горіння
+          <br>Розмір, см
+          <br>Країна-виробник товару
+          <br>Бренд
+          <br>Матеріал
+         </p>
+         <p style="float: right; text-align: right;">
+          <br>420 г
+          <br>420 годин
+          <br>30 x 24 x H6 см
+          <br>Великобританія
+          <br>Urban apothecary
+          <br>Соєвий віск
+         </p>
+         </div>
+         <br>
+          <b>Опис</b>
+          <p style="font-size: 14px;">
+          Набір свічок, 12 шт. по 35 г.<br>
+          У Luxury Candle Library входять дванадцять стильних свічок, наповнених різним фірмовим ароматом. Кожен культовий аромат народжується з історій, настроїв та спогадів, втілених у життя за допомогою сучасних сумішей квітів, фруктів, смол та деревних ароматів. Створіть свою ароматну історію, вибравши аромат для інтер'єру, який підніме, змінить чи освіжить вас та ваш будинок. &nbsp;
+         </p>
+    </div>
+    </div>
+    </div>
+    <div class="product1" style="display: flex; position: relative;">
+      <img src="img/набір 24шт.png" style="border-radius: 15%; border: 2px solid #36251b; width: 150%; height: 550px;" alt="Product 1">
+      <style>@media (max-width: 1070px) { #productss .product1 img {width: 100% !important;}}</style>
+      <style>@media (max-width: 1070px) { #productss .product1 img {bottom: 0% !important;}}</style>
+    <div class="text">
+        <h1 style="font-size: xx-large;">Подарунковий набір з 24 свічок Yankee Candle</h1>
+        <p style="font-size: 25px;">598UAH|820g</p>
+        <h2 style="color: #36251b;"><i>Незабаром в наявності!</i></h2>
+      <div class="text1" style="display: contents; position: relative; text-align: left;">
+      <div style="display: flex; margin-top: 5%;">
+         <style>@media (max-width: 1070px) { #productss .product1 .text .text1 div {padding-top: 10% !important;}}</style><p style="float: left; text-align: left; color: grey;">
+          <b>Характеристики</b>
+          <br>Вага, г
+          <br>Час горіння
+          <br>Розмір, см
+          <br>Країна-виробник товару
+          <br>Бренд
+          <br>Матеріал
+         </p>
+         <p style="float: right; text-align: right;">
+          <br>820 г
+          <br>175 годин
+          <br>36.5 x 36.5 x Н3.7 см
+          <br>США
+          <br>Yankee Candle
+          <br>Соєвий віск
+         </p>
+         </div>
+         <br>
+          <b>Опис</b>
+          <p style="font-size: 14px;">
+          Наша найменша форма свічки, чайні вогники, миттєво ароматизують ваш затишний простір. Розмір кожної свічки - 6 см х 8,5 см. До цього подарункового набору входять:
+          <ul><li>Letters to Santа — кориця, лимонний сироп, кокос, сандалове дерево, праліне;</li>
+          <li> 
+            Silver Sage & Pine — хвоя, шкіра, жасмин, кедр, амбра, мох; </li>
+          <li>Twinkling Lights — мигдаль, персик, молоко, жасмин, ваніль, сандалове дерево;</li>
+        <li>Soft Wool & Amber — апельсин, конвалія, мускус, амбра, кашемір; </li>
+        <li>Christmas Eve — апельсин, мигдаль, лайм, червоні ягоди, кориця;</li>
+        <li>Pink Cherry and Vanilla — вишня, малина, абрикос, фісташки, вишневий цвіт, ваніль;</li>
+        <li>Christmas Cookie — ніжна ваніль, каштан, кориця, цукор; </li>
+        <li>Amber & Sandalwood  — амбра, кедр, карамель, кардамон, перець і ваніль.</li>
+      </ul>
+         </p>
+    </div>
+    </div>
+    </div>
+    <div class="product1" style="display: flex; position: relative;">
+      <img src="img/набір 10шт.png" style="border-radius: 15%; border: 2px solid #36251b; width: 150%; height: 550px;" alt="Product 1">
+      <style>@media (max-width: 1070px) { #productss .product1 img {width: 100% !important;}}</style>
+      <style>@media (max-width: 1070px) { #productss .product1 img {bottom: 0% !important;}}</style>
+    <div class="text">
+        <h1 style="font-size: xx-large;">Подарунковий набір з 10 свічок Yankee Candle</h1>
+        <br>
+        <p style="font-size: 25px;">598UAH|340g</p>
+        <br>
+        <h2 style="color: #36251b;"><i>Незабаром в наявності!</i></h2>
+      <div class="text1" style="display: contents; position: relative; text-align: left;">
+      <div style="display: flex; margin-top: 5%;">
+         <style>@media (max-width: 1070px) { #productss .product1 .text .text1 div {padding-top: 10% !important;}}</style><p style="float: left; text-align: left; color: grey;">
+          <b>Характеристики</b>
+          <br>Вага, г
+          <br>Час горіння
+          <br>Розмір, см
+          <br>Країна-виробник товару
+          <br>Бренд
+          <br>Матеріал
+         </p>
+         <p style="float: right; text-align: right;">
+          <br>340 г
+          <br>70 годин
+          <br>29.5 x 12 x Н4 см
+          <br>США
+          <br>Yankee Candle
+          <br>Соєвий віск
+         </p>
+         </div>
+         <br>
+          <b>Опис</b>
+          <p style="font-size: 14px;">
+            Наша найменша форма свічки, чайні вогники, покращують атмосферу світла свічок і миттєво ароматизують на будь-який простір Розмір: 6 см х 8,5 см. Час горіння: 5-7 годин кожна. 
+            <br>
+            До цього подарункового набору входить 1 скляний свічник і 10 свічок: Silver Sage & Pine, Letters to Santa, Twinkling Lights, Soft Wool & Amber, Wild Orchid, Amber & Sandalwood, Bayside Cedar, Christmas Eve, Christmas Cookie, Cinnamon Stick.
+         </p>
+    </div>
+    </div>
+    </div>
+
+
+  <script>
+    var cartItems = [];
+
+    function addToCart(name, price, imageSrc) {
+      var existingCartItem = cartItems.find(item => item.name === name);
+
+      if (existingCartItem) {
+        existingCartItem.quantity += 1;
+      } else {
+        cartItems.push({
+          name: name,
+          price: price,
+          imageSrc: imageSrc,
+          quantity: 1
+        });
+      }
+
+      updateCartDisplay();
+      alert('Товар ' + name + ' додано в кошик!');
+
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    }
+
+    function removeFromCart(index) {
+      cartItems.splice(index, 1);
+      updateCartDisplay();
+
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    }
+
+    function increaseQuantity(index) {
+      cartItems[index].quantity += 1;
+      updateCartDisplay();
+
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    }
+
+    function decreaseQuantity(index) {
+      if (cartItems[index].quantity > 1) {
+        cartItems[index].quantity -= 1;
+        updateCartDisplay();
+
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      }
+    }
+
+    function updateCartDisplay() {
+      var cartItemsContainer = document.querySelector('.cart-item');
+      cartItemsContainer.innerHTML = '';
+
+      cartItems.forEach(function (item, index) {
+        var cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+
+        cartItem.innerHTML = `
+          <img src="${item.imageSrc}" alt="Product">
+          <h3>${item.name}</h3>
+          <p>${item.price}</p>
+          <p>${item.quantity} шт</p>
+          <button class="increase-button" onclick="increaseQuantity(${index})">+</button>
+          <button class="decrease-button" onclick="decreaseQuantity(${index})">-</button>
+          <button class="remove-button" onclick="removeFromCart(${index})">Видалити</button>
+        `;
+
+        cartItemsContainer.appendChild(cartItem);
+      });
+    }
+
+    function restoreCartFromLocalStorage() {
+      var savedCartItems = localStorage.getItem('cartItems');
+
+      if (savedCartItems) {
+        cartItems = JSON.parse(savedCartItems);
+        updateCartDisplay();
+      }
+    }
+
+    var checkoutButton = document.querySelector('.checkout-button');
+    checkoutButton.addEventListener('click', checkout);
+
+    function checkout() {
+      cartItems = [];
+      updateCartDisplay();
+      alert('Замовлення оформлено!');
+
+      localStorage.removeItem('cartItems');
+    }
+  </script>
+    
+
+</section></main>
+
+<footer>
+  <p>© 2024 Soul Light. All rights reserved.</p>
+</footer>
+
+</body></html>
