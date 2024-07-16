@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>  
+  <title>Про нас - Soul Light</title>
+  <link rel="stylesheet" href="style.css"> 
+  <script src="cart.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <main>
+    <div id="myNavLeft" class="overlay overlay-left">
+      <div class="overlay-content">
+        <a href="НОВИНКИ.HTML">Новинки</a>
+        <a href="ПРО НАС.HTML">Про нас</a>
+        <a href="ДОСТАВКА.HTML">Доставка</a>
+      </div>
+    </div>
+    
+    <div id="myNavRight" class="overlay overlay-right">
+      <div class="overlay-content">
+        <div id="cartItemsContainer"></div>
+        <button class="checkout-button" onclick="redirectToCheckout()">Оформити замовлення</button>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        restoreCartFromLocalStorage();
+      });
+    </script>
+    
+    <span class="openbtn openbtn-left" onclick="toggleLeftNav()"><img src="img/menu.png" alt="Логотип магазина"> </span>
+    <span class="openbtn openbtn-right" onclick="toggleRightNav()"><img src="img/basket.png" alt="Кошик"></span>
+
+    <script>
+      function toggleLeftNav() {
+        var navLeft = document.getElementById("myNavLeft");
+        if (navLeft.style.width === "252px") {
+          closeNavLeft();
+        } else {
+          openNavLeft();
+        }
+      }
+      
+      function openNavLeft() {
+        document.getElementById("myNavLeft").style.width = "252px";
+      }
+      
+      function closeNavLeft() {
+        document.getElementById("myNavLeft").style.width = "0%";
+      }
+      
+      function toggleRightNav() {
+        var navRight = document.getElementById("myNavRight");
+        if (navRight.style.width === "18%") {
+          closeNavRight();
+        } else {
+          openNavRight();
+        }
+      }
+      
+      function openNavRight() {
+        document.getElementById("myNavRight").style.width = "18%";
+      }
+      
+      function closeNavRight() {
+        document.getElementById("myNavRight").style.width = "0%";
+      }
+      
+      function redirectToCheckout() {
+        // Перенаправлення на нову сторінку для введення даних покупця
+        window.location.href = "checkout.html";
+      }
+    </script>
+
+    <header>
+      <div class="golovna">
+        <a href="index.html"> <img src="img/loggo.png" alt="Soul Light"></a>
+      </div>
+    </header>
+
+    <section id="about-section">
+        <div class="about-section">
+            <h2 style="font-size: 32px;">Про нас</h2>
+            <img src="img/Which one is your favourite_.jpg" alt="Свічки Soul Light">
+            <p style="font-size: 24px;">Ласкаво просимо до нашого інтернет-магазину свічок, де кожен виріб створений з любов'ю та увагою до деталей. Наша історія почалася з простої ідеї – створювати свічки, які не тільки прикрашають будинок, але й приносять тепло, затишок та атмосферу спокою. За ці роки ми перетворили цю ідею на справжнє мистецтво.</p>
+            
+            <h2 style="font-size: 32px;">Наші цінності</h2>
+            <p style="font-size: 24px;">Ми віримо, що свічки – це більше ніж просто декоративний елемент. Вони можуть бути джерелом натхнення, символом романтики, або ж просто способом розслабитися після довгого дня. Саме тому ми підходимо до створення кожної свічки з великою турботою та майстерністю.</p>
+            
+            <h2 style="font-size: 32px;">Якість і натуральність</h2>
+            <p style="font-size: 24px;">У нашому виробництві ми використовуємо лише високоякісні та натуральні матеріали. Віск, який ми застосовуємо, безпечний для здоров'я і не містить шкідливих домішок. Кожна свічка виготовлена вручну з дотриманням найвищих стандартів якості. Ми прагнемо забезпечити наших клієнтів продуктом, який не тільки красиво виглядає, але й є екологічно чистим та безпечним.</p>
+            
+            <h2 style="font-size: 32px;">Асортимент</h2>
+            <p style="font-size: 24px;">У нашому асортименті ви знайдете свічки на будь-який смак та подію. Від класичних ароматичних свічок до оригінальних дизайнерських виробів, що можуть стати чудовим подарунком для близьких. Ми постійно працюємо над розширенням нашого асортименту, слідкуємо за трендами та створюємо нові унікальні продукти.</p>
+        
+            <p style="font-size: 24px;">Дякуємо, що обираєте нас!</p>
+          </div>
+<script>
+    var cartItems = [];
+
+    function addToCart(name, price, imageSrc) {
+      var existingCartItem = cartItems.find(item => item.name === name);
+
+      if (existingCartItem) {
+        existingCartItem.quantity += 1;
+      } else {
+        cartItems.push({
+          name: name,
+          price: price,
+          imageSrc: imageSrc,
+          quantity: 1
+        });
+      }
+
+      updateCartDisplay();
+      alert('Товар ' + name + ' додано в кошик!');
+
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    }
+
+    function removeFromCart(index) {
+      cartItems.splice(index, 1);
+      updateCartDisplay();
+
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    }
+
+    function increaseQuantity(index) {
+      cartItems[index].quantity += 1;
+      updateCartDisplay();
+
+      localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    }
+
+    function decreaseQuantity(index) {
+      if (cartItems[index].quantity > 1) {
+        cartItems[index].quantity -= 1;
+        updateCartDisplay();
+
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      }
+    }
+
+    function updateCartDisplay() {
+      var cartItemsContainer = document.querySelector('#cartItemsContainer');
+      cartItemsContainer.innerHTML = '';
+
+      cartItems.forEach(function (item, index) {
+        var cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+
+        cartItem.innerHTML = `
+          <img src="${item.imageSrc}" alt="Product">
+          <h3>${item.name}</h3>
+          <p>${item.price}</p>
+          <p>${item.quantity} шт</p>
+          <button class="increase-button" onclick="increaseQuantity(${index})">+</button>
+          <button class="decrease-button" onclick="decreaseQuantity(${index})">-</button>
+          <button class="remove-button" onclick="removeFromCart(${index})">Видалити</button>
+        `;
+
+        cartItemsContainer.appendChild(cartItem);
+      });
+    }
+
+    function restoreCartFromLocalStorage() {
+      var savedCartItems = localStorage.getItem('cartItems');
+
+      if (savedCartItems) {
+        cartItems = JSON.parse(savedCartItems);
+        updateCartDisplay();
+      }
+    }
+
+    var checkoutButton = document.querySelector('.checkout-button');
+    checkoutButton.addEventListener('click', checkout);
+
+    function checkout() {
+      cartItems = [];
+      updateCartDisplay();
+      alert('Замовлення оформлено!');
+
+      localStorage.removeItem('cartItems');
+    }
+  </script>
+</section> 
+  </main>
+
+  <footer>
+    <p>© 2024 Soul Light. All rights reserved.</p>
+  </footer>
+</body>
+</html>
