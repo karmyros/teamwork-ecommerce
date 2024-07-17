@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="style.css" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <script src="cart.js"></script>
+  <title>Мій магазин</title>
+  
+</head>
+<body style="overflow-x: hidden;">
+   
+  <main style = "width: 100%;">
+    <div id="myNavLeft" class="overlay overlay-left">
+      <div class="overlay-content">
+        <a href="НОВИНКИ.html">Новинки</a>
+        <a href="ПРО НАС.HTML">Про нас</a>
+        <a href="ДОСТАВКА.HTML">Доставка</a>
+      </div>
+    </div>
+    
+    <div id="myNavRight" class="overlay overlay-right">
+      <div class="overlay-content">
+        <div class="cart-item">
+        </div>
+        <button class="checkout-button" onclick="redirectToCheckout()">Оформити замовлення</button>
+      </div>
+       
+    </div>
+    
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        restoreCartFromLocalStorage();
+      });
+    </script>
+    
+
+    <span class="openbtn openbtn-left" onclick="toggleLeftNav()"><img src="img/menu.png" alt="Логотип магазина"> </span>
+    <span class="openbtn openbtn-right" onclick="toggleRightNav()"><img src="img/basket.png" alt="Кошик"></span>
+    
+    <script>
+      function toggleLeftNav() {
+        var navLeft = document.getElementById("myNavLeft");
+        if (navLeft.style.width === "252px") {
+          closeNavLeft();
+        } else {
+          openNavLeft();
+        }
+      }
+      
+      function openNavLeft() {
+        document.getElementById("myNavLeft").style.width = "252px";
+      }
+      
+      function closeNavLeft() {
+        document.getElementById("myNavLeft").style.width = "0%";
+      }
+      
+      function toggleRightNav() {
+        var navRight = document.getElementById("myNavRight");
+        if (navRight.style.width === "18%") {
+          closeNavRight();
+        } else {
+          openNavRight();
+        }
+      }
+      
+      function openNavRight() {
+        document.getElementById("myNavRight").style.width = "18%";
+      }
+      
+      function closeNavRight() {
+        document.getElementById("myNavRight").style.width = "0%";
+      }
+      
+      function redirectToCheckout() {
+        // Перенаправлення на нову сторінку для введення даних покупця
+        window.location.href = "оформлення.html";
+      }
+    </script>
+    
+    <header>
+      <div class="golovna">
+        <a href="index.html"> <img src="img/loggo.png" alt="головна"></a>
+            </header>
+    <section id="productss">
+     
+    
+  
+      <div class="product1" style="display: flex; position: relative;">
+        <img src="img/бджолиний мед.png" style="border-radius: 15%; margin-left: 10%; border: 2px solid #36251B; bottom: 7%; transform: scale(0.8, 0.7); height: 600px; width: 500px;"alt="Product 1">
+      <div class="text">
+          <h1>Набір свічок “Бджолиний мед”</h1>
+          <p style="font-size: 25px;">Ціна:330UAH|750g</p>
+        <button class="add-to-cart" onclick="addToCart('Набір свічок “Бджолиний мед”', '330UAH | 750g', 'img/бджолиний мед.png')">Додати в кошик</button>
+        <div class="text1" style="display: contents; position: relative; text-align: left;">
+        <div style="display: flex; margin-top: 10%;">
+           <p style="float: left; text-align: left; margin-left: 6%;">
+            <b>Характеристики</b>
+            <br>Вага, г
+            <br>Час горіння
+            <br>Розмір, см
+            <br>Країна-виробник товару
+            <br>Матеріал
+           </p>
+           <p style="float: right; text-align: right;">
+            <br>750 г
+            <br>3-4 години
+            <br>4 х 13 см
+            <br>Україна
+            <br>Бджолиний віск
+           </p>
+           </div>
+           <br>
+            <b>Властивості компонентів свічок</b>
+            <ul>
+            <li>Насичують простір природними речовинами, що позитивно впливають імунітет.</li>
+            <li>Мають виражену антимікробну та лікувальну дію. </li>
+            <li>Очищають органи дихання (для людей, які страждають на захворювання, пов'язані з диханням буде дуже корисним подихати порами свічки з вощини). </li>
+            <li>Мають доведену користь для нервової системи. </li>
+            <li>Допомагають нормалізувати сон. </li>
+            <li>У них немає токсичних побічних продуктів та важкої сажі при спалюванні. </li>
+            </ul>
+           </p>
+      </div>
+      </div>
+      </div>
+     
+    <script>
+      var cartItems = [];
+
+      function addToCart(name, price, imageSrc) {
+        var existingCartItem = cartItems.find(item => item.name === name);
+
+        if (existingCartItem) {
+          existingCartItem.quantity += 1;
+        } else {
+          cartItems.push({
+            name: name,
+            price: price,
+            imageSrc: imageSrc,
+            quantity: 1
+          });
+        }
+
+        updateCartDisplay();
+        alert('Товар ' + name + ' додано в кошик!');
+
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      }
+
+      function removeFromCart(index) {
+        cartItems.splice(index, 1);
+        updateCartDisplay();
+
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      }
+
+      function increaseQuantity(index) {
+        cartItems[index].quantity += 1;
+        updateCartDisplay();
+
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      }
+
+      function decreaseQuantity(index) {
+        if (cartItems[index].quantity > 1) {
+          cartItems[index].quantity -= 1;
+          updateCartDisplay();
+
+          localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        }
+      }
+
+      function updateCartDisplay() {
+        var cartItemsContainer = document.querySelector('.cart-item');
+        cartItemsContainer.innerHTML = '';
+
+        cartItems.forEach(function (item, index) {
+          var cartItem = document.createElement('div');
+          cartItem.classList.add('cart-item');
+
+          cartItem.innerHTML = `
+            <img src="${item.imageSrc}" alt="Product">
+            <h3>${item.name}</h3>
+            <p>${item.price}</p>
+            <p>${item.quantity}</p>
+            <button class="increase-button" onclick="increaseQuantity(${index})">+</button>
+            <button class="decrease-button" onclick="decreaseQuantity(${index})">-</button>
+            <button class="remove-button" onclick="removeFromCart(${index})">Видалити</button>
+          `;
+
+          cartItemsContainer.appendChild(cartItem);
+        });
+      }
+
+      function restoreCartFromLocalStorage() {
+        var savedCartItems = localStorage.getItem('cartItems');
+
+        if (savedCartItems) {
+          cartItems = JSON.parse(savedCartItems);
+          updateCartDisplay();
+        }
+      }
+
+      var checkoutButton = document.querySelector('.checkout-button');
+      checkoutButton.addEventListener('click', checkout);
+
+      function checkout() {
+        cartItems = [];
+        updateCartDisplay();
+        alert('Замовлення оформлено!');
+
+        localStorage.removeItem('cartItems');
+      }
+    </script>
+      
+
+  </main>
+
+  <footer>
+    <p>© 2024 Soul Light. All rights reserved.</p>
+  </footer>
+</body>
+</html>
