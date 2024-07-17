@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Мій магазин</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Sofia+Sans:wght@400;600&display=swap" rel="stylesheet">
+  
+</head>
+<body style="overflow-x: hidden;">
+   
+  <main style = "width: 100%;">
+    <div id="myNavLeft" class="overlay overlay-left">
+      <a href="НОВИНКИ.html">Новинки</a>
+      <a href="ПРО НАС.HTML">Про нас</a>
+      <a href="ДОСТАВКА.HTML">Доставка</a>
+    </div>
+    
+    <div id="myNavRight" class="overlay overlay-right">
+      <div class="overlay-content">
+        <div class="cart-item">
+        </div>
+        <button class="checkout-button" onclick="redirectToCheckout()">Оформити замовлення</button>
+      </div>
+       
+    </div>
+    
+    
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        restoreCartFromLocalStorage();
+      });
+    </script>
+    
+
+    <span class="openbtn openbtn-left" onclick="toggleLeftNav()"><img src="img/menu.png" alt="Логотип магазина"> </span>
+    <span class="openbtn openbtn-right" onclick="toggleRightNav()"><img src="img/basket.png" alt="Кошик"></span>
+    
+    <script>
+      function toggleLeftNav() {
+        var navLeft = document.getElementById("myNavLeft");
+        if (navLeft.style.width === "252px") {
+          closeNavLeft();
+        } else {
+          openNavLeft();
+        }
+      }
+      
+      function openNavLeft() {
+        document.getElementById("myNavLeft").style.width = "252px";
+      }
+      
+      function closeNavLeft() {
+        document.getElementById("myNavLeft").style.width = "0%";
+      }
+      
+      function toggleRightNav() {
+        var navRight = document.getElementById("myNavRight");
+        if (navRight.style.width === "18%") {
+          closeNavRight();
+        } else {
+          openNavRight();
+        }
+      }
+      
+      function openNavRight() {
+        document.getElementById("myNavRight").style.width = "18%";
+      }
+      
+      function closeNavRight() {
+        document.getElementById("myNavRight").style.width = "0%";
+      }
+      
+      function redirectToCheckout() {
+        // Перенаправлення на нову сторінку для введення даних покупця
+        window.location.href = "checkout.html";
+      }
+    </script>
+    
+    <header>
+      <div class="golovna">
+        <a href="index.html"> <img src="img/loggo.png" alt="головна"></a>
+            </header>
+    <section id="productss">
+     
+    
+  
+      <div class="product1" style="display: flex; position: relative;">
+        <img src="img/ягідний мікс.png" style="border-radius: 15%; margin-left: 10%; border: 2px solid #36251B; bottom: 7%; transform: scale(0.8, 0.7); height: 600px; width: 500px;"alt="Product 1">
+      <div class="text">
+          <h1>Ароматична свічка “Ягідний мікс”</h1>
+          <p style="font-size: 25px;">Ціна: 800UAH | 200g</p>
+        <button class="add-to-cart" onclick="addToCart('Ароматична свічка “Ягідний мікс”', '800UAH | 200g', 'img/ягідний мікс.png')">Додати в кошик</button>
+        <div class="text1" style="display: contents; position: relative; text-align: left;">
+        <div style="display: flex; margin-top: 9%;">
+           <p style="float: left; text-align: left; margin-left: 6%;">
+            <b>Характеристики</b>
+            <br>Вага, г
+            <br>Час горіння
+            <br>Ноти
+            <br>Розмір, см
+            <br>Країна-виробник товару
+            <br>Бренд
+           </p>
+           <p style="float: right; text-align: right;">
+            <br>200 г
+            <br>60 годин
+            <br>фруктові
+            <br>10 х Н11,5 см
+            <br>США
+            <br>Woodwick
+           </p>
+           </div>
+           <br>
+            <b>Ноти</b>
+            <ul>
+            <p>Верхня: м'ята, суниця, малина </p>
+            <p>Середня: буряк, апельсин, зимова зелень </p>
+            <p>В основі: пачулі, дуб, ірис </p>
+            </ul>
+            <br>
+            <b>Характеристики</b>
+           <ul>
+            <li>Дерев'яний запатентований гніт</li>
+            <li>Скляний свічник</li>
+            <li>Кришка для правильного гасіння</li>
+            <br>
+            Уяви яскраві сонячні промені, які пробиваються крізь дубовий гай — основа весняної новинки від
+            <p>Woodwick. Перші ноти, які відчуваєш, це лісова малина та суниці, у середніх нотах є цитрусові, 
+             буряк та листя салату. 
+           </p>
+      </div>
+      </div>
+      </div>
+     
+    <script>
+      var cartItems = [];
+
+      function addToCart(name, price, imageSrc) {
+        var existingCartItem = cartItems.find(item => item.name === name);
+
+        if (existingCartItem) {
+          existingCartItem.quantity += 1;
+        } else {
+          cartItems.push({
+            name: name,
+            price: price,
+            imageSrc: imageSrc,
+            quantity: 1
+          });
+        }
+
+        updateCartDisplay();
+        alert('Товар ' + name + ' додано в кошик!');
+
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      }
+
+      function removeFromCart(index) {
+        cartItems.splice(index, 1);
+        updateCartDisplay();
+
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      }
+
+      function increaseQuantity(index) {
+        cartItems[index].quantity += 1;
+        updateCartDisplay();
+
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+      }
+
+      function decreaseQuantity(index) {
+        if (cartItems[index].quantity > 1) {
+          cartItems[index].quantity -= 1;
+          updateCartDisplay();
+
+          localStorage.setItem('cartItems', JSON.stringify(cartItems));
+        }
+      }
+
+      function updateCartDisplay() {
+        var cartItemsContainer = document.querySelector('.cart-item');
+        cartItemsContainer.innerHTML = '';
+
+        cartItems.forEach(function (item, index) {
+          var cartItem = document.createElement('div');
+          cartItem.classList.add('cart-item');
+
+          cartItem.innerHTML = `
+            <img src="${item.imageSrc}" alt="Product">
+            <h3>${item.name}</h3>
+            <p>${item.price}</p>
+            <p>${item.quantity} </p>
+            <button class="increase-button" onclick="increaseQuantity(${index})">+</button>
+            <button class="decrease-button" onclick="decreaseQuantity(${index})">-</button>
+            <button class="remove-button" onclick="removeFromCart(${index})">Видалити</button>
+          `;
+
+          cartItemsContainer.appendChild(cartItem);
+        });
+      }
+
+      function restoreCartFromLocalStorage() {
+        var savedCartItems = localStorage.getItem('cartItems');
+
+        if (savedCartItems) {
+          cartItems = JSON.parse(savedCartItems);
+          updateCartDisplay();
+        }
+      }
+
+      var checkoutButton = document.querySelector('.checkout-button');
+      checkoutButton.addEventListener('click', checkout);
+
+      function checkout() {
+        cartItems = [];
+        updateCartDisplay();
+        alert('Замовлення оформлено!');
+
+        localStorage.removeItem('cartItems');
+      }
+    </script>
+      
+
+  </main>
+
+  <footer>
+    <p>© 2024 Soul Light. All rights reserved.</p>
+  </footer>
+</body>
+</html>
